@@ -1,0 +1,32 @@
+apply plugin: 'node'
+
+buildscript {
+  repositories {
+    mavenCentral()
+    jcenter()
+  }
+  dependencies {
+    classpath 'org.ajoberstar:gradle-git:0.8.0'
+    classpath 'com.moowork.gradle:gradle-node-plugin:0.3'
+  }
+}
+
+task wrapper(type: Wrapper) {
+  gradleVersion = '1.10'
+}
+
+
+node {
+    version = '0.10.22'
+    distBaseUrl = 'http://nodejs.org/dist'
+    download = true
+}
+
+
+/*
+task build(type: NodeTask, dependsOn: 'npmInstall') {
+    description 'Installs Node.js, installs packages from package.json, and runs Grunt.js build'
+    script = file('node_modules/.bin/brunch')
+    args = ['build']
+}
+*/
